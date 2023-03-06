@@ -37,12 +37,41 @@ console.log("This is example result: ", fred.task());
   * destroy() // A method that returns: `${this.name} was removed from the game.`
 */
 
+class GameObject {
+  constructor(attr){
+    this.createdAt = attr.createdAt
+    this.name = attr.name
+    this.dimensions = attr.dimensions
+  }
+
+destroy(){
+  return `${this.name} was removed from the game.`
+}
+
+}
+
+
+
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // A method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's method
 */
+
+class CharacterStats extends GameObject{
+  constructor(attr){
+    super(attr)
+    this.healthPoints = attr.healthPoints
+  }
+
+  takeDamage(){
+    return `${this.name} took damage`
+  }
+
+}
+
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -54,6 +83,18 @@ console.log("This is example result: ", fred.task());
   * should inherit takeDamage() from CharacterStats
 */
  
+class Humanoid extends CharacterStats{
+  constructor(attr){
+    super(attr)
+    this.team = attr.team
+    this.weapons = attr.weapons
+    this.language = attr.language
+  }
+  greet(){
+    return `${this.name} offers a greeting in ${this.language}`
+  }
+ }
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -62,7 +103,7 @@ console.log("This is example result: ", fred.task());
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -123,7 +164,7 @@ console.log("This is example result: ", fred.task());
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+  
 
   // Stretch task: 
   // * Create Villain and Hero class that inherit from the Humanoid class.  

@@ -10,3 +10,29 @@
 // Create an object named "Me" using the "Person" constructor function
 // Call the "Speak" method on the "Me" object
 // Console log all your results
+
+
+function Person(name, age, hobby) {
+     this.name = name
+     this.age = age
+    this.hobby = hobby                 
+ }
+                
+   Person.prototype.Speak = function(){
+ return  " Hello, My name is " + this.name + " and I'm  "+ this.age + " years old. and I love  " + this.hobby
+                
+ }
+                
+                
+ let me = new Person('Abdiasiis', 21, 'football')
+ let dad = new Person('Halane', 45, 'Reading')
+                
+                
+ console.log(me.Speak());
+ console.log(dad.Speak());
+                
+
+
+
+
+                
